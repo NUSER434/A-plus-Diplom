@@ -1,3 +1,253 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* Стиль для трапеции */
+.clip-path-trapezoid {
+    clip-path: polygon(
+        0 0, /* Левый верхний угол */
+        878px 0, /* Правый верхний угол */
+        1178px 500px, /* Правый нижний угол */
+        0 500px /* Левый нижний угол */
+    );
+}
+
+
+
+
+
+/* Стили для кнопок фильтрации */
+.filter-button {
+    border: 1px solid black;
+    background-color: transparent;
+    color: black;
+    transition: all 0.3s ease;
+}
+
+.filter-button:hover {
+    background-color: black;
+    color: white;
+}
+
+.filter-button.active {
+    background-color: black;
+    color: white;
+}
+
+
+
+
+
+
+/* Стиль для изображений */
+.slider-image {
+    width: 100%; /* Заполняет ширину контейнера */
+    height: 100%; /* Заполняет высоту контейнера */
+    object-fit: cover; /* Сохраняет пропорции и обрезает лишнее */
+    opacity: 0; /* Начальная прозрачность */
+    transition: opacity 0.5s ease-in-out; /* Плавная анимация */
+}
+
+.slider-image.active {
+    opacity: 1; /* Активное изображение становится видимым */
+}
+
+
+
+
+
+
+/* Стили для кнопок */
+#scroll-to-top {
+    display: none; /* Изначально скрыта */
+}
+
+#scroll-to-top:hover,
+a:hover {
+    transform: scale(1.1); /* Небольшое увеличение при наведении */
+}
+
+/* Общие стили для всех кнопок */
+.fixed {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 50;
+}
+
+/* Стили для дополнительных кнопок "WhatsApp" и "Telegram" */
+#social-buttons {
+    display: none; /* Изначально скрыты */
+}
+.hidden {
+    display: none !important;
+}
+
+
+
+#social-buttons {
+    position: absolute;
+    bottom: 70px; /* Расположение над кнопкой "Связь" */
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Отступ между кнопками */
+}
+
+/* Убедитесь, что кнопки видны при удалении класса hidden */
+#social-buttons:not(.hidden) {
+    display: flex !important;
+}
+
+
+
+
+
+
+
+
+
+
+/* Стили для контейнера результатов поиска */
+#search-results {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+#search-results ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#search-results li {
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#search-results li:hover {
+    background-color: #f0f0f0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.overflow-x-auto {
+    scrollbar-width: thin; /* Уменьшает ширину полосы прокрутки */
+    scrollbar-color: #888 transparent; /* Цвет полосы прокрутки */
+}
+
+.overflow-x-auto::-webkit-scrollbar {
+    height: 8px; /* Высота полосы прокрутки */
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb {
+    background-color: #888; /* Цвет бегунка */
+    border-radius: 4px; /* Закругление углов */
+}
+
+
+
+
+
+
+/* Стили для кнопок калькулятора */
+.calculator-option {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 2px solid black;
+    background-color: transparent;
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.calculator-option:hover {
+    background-color: black;
+    color: white;
+}
+
+.calculator-option.active {
+    background-color: black;
+    color: white;
+}
+
+
+
+
+/* Стили для контейнера с контентом */
+#content-container > div {
+    display: none;
+}
+
+#content-container > div:not(.hidden) {
+    display: block;
+}
+
+/* Стили для контейнера с контентом */
+#content1-container > div {
+    display: none;
+}
+
+#content1-container > div:not(.hidden) {
+    display: block;
+}
+
+
+
+
+
+
+
+
+@media (max-width: 1200px) {
+    header {
+        width: 95%;
+    }
+}
+
+@media (max-width: 768px) {
+    header nav {
+        display: none;
+    }
+
+    header .flex {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    header {
+        margin-left: 0;
+    }
+}
+
+
+.slider-dot.active {
+    background-color: black;
+}
+
+@media (max-width: 1200px) {
+    .slider-container {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .slider-content {
+        max-width: 100%;
+        padding: 20px;
+    }
+}

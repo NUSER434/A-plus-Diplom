@@ -11,50 +11,56 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display the user's profile form.
-     */
-    public function edit(Request $request): View
+    // Показать страницу профиля
+    public function index()
     {
-        return view('profile.edit', [
-            'user' => $request->user(),
-        ]);
+        $user = Auth::user(); // Получаем данные текущего пользователя
+        return view('profile', ['user' => $user]);
     }
 
-    /**
-     * Update the user's profile information.
-     */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
+    // Обновить данные профиля
+    public function update(Request $request)
     {
-        $request->user()->fill($request->validated());
+        $user = Auth::user();
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        // Валидация данных
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Максимальный размер файла: 2MB
+        ]);
+
+        // Обновляем текстовые данные
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+
+        // Обработка загрузки аватара
+        if ($request->hasFile('avatar')) {
+            $avatarPath = $request->file('avatar')->store('avatars', 'public');
+            $user->avatar = '/storage/' . $avatarPath; // Сохраняем путь к аватару
         }
 
-        $request->user()->save();
+        $user->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return back()->with('success', 'Профиль успешно обновлен!');
     }
 
-    /**
-     * Delete the user's account.
-     */
-    public function destroy(Request $request): RedirectResponse
+    // Удаление аккаунта
+    public function delete(Request $request)
     {
-        $request->validateWithBag('userDeletion', [
-            'password' => ['required', 'current_password'],
-        ]);
+        $user = Auth::user();
 
-        $user = $request->user();
+        // Проверка подтверждения удаления
+        if ($request->input('confirmation') !== 'deleted') {
+            return back()->withErrors(['confirmation' => 'Подтверждение не выполнено.']);
+        }
 
-        Auth::logout();
-
+        // Удаляем пользователя из базы данных
         $user->delete();
 
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+        // Выходим из системы
+        Auth::logout();
 
-        return Redirect::to('/');
+        return redirect('/')->with('success', 'Аккаунт успешно удален.');
     }
 }
