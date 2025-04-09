@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\SliderController;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Slider;
 use App\Models\Service;
@@ -47,6 +47,35 @@ class HomeController extends Controller
         ];
 
         // Передаем данные в представление
-        return view('home', compact('popularServices','specialServices','reviews', 'thanks','sliders', 'otherData', 'portfolios'));
+        return view('home', compact('popularServices', 'specialServices', 'reviews', 'thanks', 'sliders', 'otherData', 'portfolios'));
     }
+
+    public function submitReview(Request $request)
+        {
+            // Проверяем авторизацию
+            if (!Auth::check()) {
+                return back()->withErrors(['error' => 'Вы не авторизованы. Пожалуйста, войдите или зарегистрируйтесь.']);
+            }
+
+            $user = Auth::user();
+
+            // Валидация данных
+            $validated = $request->validate([
+                'rating' => 'required|numeric|min:1|max:5', // Оценка от 1 до 5
+                'review' => 'required|string', // Текст отзыва
+            ]);
+
+            // Создание отзыва
+            Review::create([
+                'user_id' => $user->id, // ID авторизованного пользователя
+                'avatar' => $user->avatar ?? null, // Аватарка из профиля пользователя
+                'name' => $user->first_name . ' ' . $user->last_name, // Имя пользователя
+                'rating' => $validated['rating'], // Оценка
+                'review' => $validated['review'], // Текст отзыва
+                'source' => 'Отзыв с сайта', // Источник отзыва
+            ]);
+
+            return back()->with('success', 'Спасибо за ваш отзыв!');
+        }
+    
 }

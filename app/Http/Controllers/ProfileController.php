@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\Request as RequestModel;
 
 class ProfileController extends Controller
 {
@@ -15,43 +16,71 @@ class ProfileController extends Controller
     public function index()
     {
         $user = Auth::user(); // Получаем данные текущего пользователя
-        return view('profile', ['user' => $user]);
+        $requests = RequestModel::where('email', $user->email)->get(); // Загружаем историю запросов
+        return view('profile', ['user' => $user, 'requests' => $requests]);
     }
 
-    // Обновить данные профиля
-    public function update(Request $request)
+    // Обновить данные профиля (ФИО, телефон)
+    public function updateProfile(Request $request)
     {
         $user = Auth::user();
 
         // Валидация данных
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $user->id,
-            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Максимальный размер файла: 2MB
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'nullable|string|max:255',
+            'middle_name' => 'nullable|string|max:255',
+            'phone' => 'nullable|string|max:20',
         ]);
 
-        // Обновляем текстовые данные
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
+        // Обновляем данные пользователя
+        $user->update($validated);
 
-        // Обработка загрузки аватара
-        if ($request->hasFile('avatar')) {
-            $avatarPath = $request->file('avatar')->store('avatars', 'public');
-            $user->avatar = '/storage/' . $avatarPath; // Сохраняем путь к аватару
-        }
+        return back()->with('success', 'Данные успешно обновлены!');
+    }
 
-        $user->save();
+    // Изменить пароль
+    public function updatePassword(Request $request)
+    {
+        $user = Auth::user();
 
-        return back()->with('success', 'Профиль успешно обновлен!');
+        // Валидация данных
+        $validated = $request->validate([
+            'current_password' => ['required', 'current_password'],
+            'new_password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+
+        // Обновляем пароль
+        $user->update([
+            'password' => Hash::make($validated['new_password']),
+        ]);
+
+        return back()->with('success', 'Пароль успешно изменен!');
+    }
+
+    // Изменить email
+    public function updateEmail(Request $request)
+    {
+        $user = Auth::user();
+
+        // Валидация данных
+        $validated = $request->validate([
+            'new_email' => 'required|email|unique:users,email',
+        ]);
+
+        // Обновляем email
+        $user->update(['email' => $validated['new_email']]);
+
+        return back()->with('success', 'Email успешно изменен!');
     }
 
     // Удаление аккаунта
-    public function delete(Request $request)
+    public function deleteAccount(Request $request)
     {
         $user = Auth::user();
 
         // Проверка подтверждения удаления
-        if ($request->input('confirmation') !== 'deleted') {
+        if ($request->input('confirmation') !== 'DELETED') {
             return back()->withErrors(['confirmation' => 'Подтверждение не выполнено.']);
         }
 

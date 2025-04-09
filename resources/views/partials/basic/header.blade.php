@@ -12,7 +12,7 @@
 
         <!-- Информация -->
         <div class="ml-[31%] space-y-1 group text-right">
-            <p class="text-gray-900 font-medium hover:text-red-500 transition duration-300">+7 (351) 777-36-55</p>
+            <a href="tel:+73517773655" class="text-gray-900 font-medium hover:text-red-500 transition duration-300">+7 (351) 777-36-55</a>
             <p class="text-gray-500 text-sm hover:text-red-500 transition duration-300">aplus174@mail.ru</p>
         </div>
 
@@ -91,7 +91,7 @@
         @else
             <!-- Для гостя -->
             <div class="flex items-center space-x-3 ml-[29%] border border-black rounded-[10px]">
-                <img src="{{ asset('images/default-avatar.png') }}" alt="Avatar" class="w-[30px] h-[30px] rounded-full ml-[15px]">
+                <img src="{{ asset('images/defaul.png') }}" alt="Avatar" class="w-[30px] h-[30px] rounded-full ml-[15px]">
                 <div class="flex items-center space-x-0  overflow-hidden">
                     <a href="{{ route('register') }}" class="w-[145px] h-[50px] flex items-center justify-center border-l border-black rounded-l-[5px] bg-transparent hover:bg-black hover:text-white transition duration-300">
                         Регистрация

@@ -59,16 +59,16 @@
             <h3 class="text-lg font-bold ">Контакты</h3>
             <div class="space-y-4">
                 <div class="flex items-center space-y-2">
-                    <p class="text-base font-medium ">+7 (351) 777-36-55</p>
+                    <a href="tel:+73517773655" class="text-base font-medium hover:text-red-500">+7 (351) 777-36-55</a>
                     <p class="text-xs text-gray-400 ml-[35px]">Бесплатно по РФ</p>
                 </div>
                 <div class="flex items-center space-y-2">
-                    <p class="text-base font-medium">+7 (951) 804-80-39</p>
+                    <a href="tel:+79518048039" class="text-base font-medium hover:text-red-500">+7 (951) 804-80-39</a>
                     <p class="text-xs text-gray-400 ml-[35px]">Бесплатно по РФ</p>
                 </div>
-                <p class="text-base mt-[30px]">aplus174@mail.ru</p>
-                <p class="text-base">454016, г. Челябинск, ул. Братьев Кашириных, д. 73, 1 этаж, офис 6</p>
-                <p class="text-base">Остановка общ.транспорта «Полковая» отдельно стоящее красное кирпичное здание (рядом гипермаркет Лента)</p>
+                <p class="text-base hover:text-red-500 mt-[30px]">aplus174@mail.ru</p>
+                <p class="text-base hover:text-red-500">454016, г. Челябинск, ул. Братьев Кашириных, д. 73, 1 этаж, офис 6</p>
+                <p class="text-base hover:text-red-500">Остановка общ.транспорта «Полковая» отдельно стоящее красное кирпичное здание (рядом гипермаркет Лента)</p>
             </div>
         </div>
 

@@ -7,7 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cart extends Model
 {
-    use HasFactory;
+    protected $fillable = [
+        'user_id',
+        'service_category',
+        'options',
+        'quantity',
+        'total_price',
+    ];
 
-    protected $fillable = ['service_name', 'options', 'quantity', 'price'];
+    protected $casts = [
+        'options' => 'array',
+    ];
 }

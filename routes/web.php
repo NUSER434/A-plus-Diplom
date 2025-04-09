@@ -10,6 +10,8 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\RequestController;
+use App\Http\Controllers\FeedbackController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +42,9 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Главная страница (доступна всем)
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/choose-form', [RequestController::class, 'showForm'])->name('choose.form');
+Route::post('/submit-form', [RequestController::class, 'submitForm'])->name('submit.form');
+Route::post('/submit-review', [HomeController::class, 'submitReview'])->name('submit.review');
 
 
 // Услуги (доступны всем)
@@ -59,11 +64,12 @@ Route::get('/portfolio/{category}', [PortfolioController::class, 'show'])->name(
 // Контакты (доступно всем)
 Route::get('/contacts', [ContactController::class, 'index'])->name('contacts');
 
-// Профиль пользователя (только для авторизованных)
-Route::middleware(['auth'])->group(function () {
+Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-    Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile/delete', [ProfileController::class, 'delete'])->name('profile.delete');
+    Route::post('/profile/update-profile', [ProfileController::class, 'updateProfile'])->name('profile.update');
+    Route::post('/profile/update-password', [ProfileController::class, 'updatePassword'])->name('profile.update.password');
+    Route::post('/profile/update-email', [ProfileController::class, 'updateEmail'])->name('profile.update.email');
+    Route::post('/profile/delete-account', [ProfileController::class, 'deleteAccount'])->name('profile.delete');
 });
 
 // Корзина
