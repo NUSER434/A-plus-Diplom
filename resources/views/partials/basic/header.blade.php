@@ -1,192 +1,262 @@
-<header class="w-full">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @vite(['resources/js/app.js'])
+    @vite('resources/css/header1.css')
+</head>
+<body>
+<header class="site-header w-full">
     <!-- Верхняя часть -->
-    <div class="max-w-[1200px] mx-auto flex items-center py-4">
-        <!-- Логотип -->
-        <a href="{{ route('home') }}" class="flex items-center space-x-2 group">
-            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-[75px] h-[75px] transition-transform duration-300 group-hover:scale-110 rounded-full">
-            <div class="text-left">
-                <p class="text-gray-600 text-lg">Типография</p>
-                <p class="text-2xl font-bold text-gray-900">А ПЛЮС</p>
-            </div>
-        </a>
+    <div class="top-header py-2.5">
+        <div class="header-content mx-auto max-w-[1300px] px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-4">
+            <!-- Логотип -->
+            <a href="{{ route('home') }}" class="logo-container flex items-center gap-2.5 no-underline text-inherit">
+                <img src="{{ asset('images/logo.png') }}" alt="Логотип"
+                    class="logo-image w-[60px] h-[60px] sm:w-[75px] sm:h-[75px] animate-logo">
 
-        <!-- Информация -->
-        <div class="ml-[31%] space-y-1 group text-right">
-            <a href="tel:+73517773655" class="text-gray-900 font-medium hover:text-red-500 transition duration-300">+7 (351) 777-36-55</a>
-            <p class="text-gray-500 text-sm hover:text-red-500 transition duration-300">aplus174@mail.ru</p>
-        </div>
+                <div class="text-container flex flex-col logo-text">
+                    <!-- Типография -->
+                    <p class="typo-text flex gap-0.5 text-gray-500 text-base">
+                        <span class="letter opacity-0">Т</span>
+                        <span class="letter opacity-0">и</span>
+                        <span class="letter opacity-0">п</span>
+                        <span class="letter opacity-0">о</span>
+                        <span class="letter opacity-0">г</span>
+                        <span class="letter opacity-0">р</span>
+                        <span class="letter opacity-0">а</span>
+                        <span class="letter opacity-0">ф</span>
+                        <span class="letter opacity-0">и</span>
+                        <span class="letter opacity-0">я</span>
+                    </p>
 
-        <!-- Соцсети -->
-        <div class="ml-[30px] flex space-x-6">
-            <a href="#" class="group">
-                <img src="{{ asset('images/messengers/headers/heder-wat.png') }}" alt="Telegram" class="w-[40px] h-[40px] transition-transform duration-300 group-hover:scale-110">
+                    <!-- А ПЛЮС -->
+                    <p class="brand-text flex gap-0.5 text-black font-bold text-2xl">
+                        <span class="letter opacity-0 delay-[400ms]">А</span>
+                        <span class="letter opacity-0 delay-[500ms]">&nbsp;</span>
+                        <span class="letter opacity-0 delay-[600ms]">П</span>
+                        <span class="letter opacity-0 delay-[700ms]">Л</span>
+                        <span class="letter opacity-0 delay-[800ms]">Ю</span>
+                        <span class="letter opacity-0 delay-[900ms]">С</span>
+                    </p>
+                </div>
             </a>
-            <a href="#" class="group">
-                <img src="{{ asset('images/messengers/headers/heder-tg.png') }}" alt="WhatsApp" class="w-[40px] h-[40px] transition-transform duration-300 group-hover:scale-110">
-            </a>
-            <a href="https://vk.com/aplus174" class="group">
-                <img src="{{ asset('images/messengers/headers/heder-vk.png') }}" alt="Vk" class="w-[40px] h-[40px] transition-transform duration-300 group-hover:scale-110">
-            </a>
-        </div>
 
-        <!-- Блок поиска -->
-        <div class="relative ml-[25px] w-[282px]">
-            <!-- Поле поиска -->
-            <div class="w-full h-[50px] border border-black rounded-[10px] flex items-center">
-                <input 
-                    type="text" 
-                    id="search-input" 
-                    placeholder="Поиск..." 
-                    class="flex-1 h-full px-4 text-black rounded-l-[10px] border-none placeholder-gray-500"
-                >
-                <div class="h-full w-[1px] bg-black"></div> <!-- Вертикальная линия -->
-                <button 
-                    id="search-button" 
-                    class="w-[50px] h-full flex items-center justify-center"
-                >
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
-                </button>
-            </div>
+            <!-- Блоки справа -->
+            <div class="top-right flex grow justify-end items-center gap-4 sm:gap-6">
+                <!-- Информационный блок -->
+                <div class="info-block sm:flex flex-col font-normal text-sm">
+                    <a href="tel:+73517773655" class="phone-animation flex justify-end text-black font-medium">
+                        <span class="letter opacity-0 animate-letter-fadein">+</span>
+                        <span class="letter opacity-0 animate-letter-fadein">7</span>
+                        <span class="letter opacity-0 animate-letter-fadein">&nbsp;</span>
+                        <span class="letter opacity-0 animate-letter-fadein">(351)</span>
+                        <span class="letter opacity-0 animate-letter-fadein">&nbsp;777-36-55</span>
+                    </a>
+                    <p class="email-animation flex justify-end text-gray-500 text-xs">
+                        <span class="letter opacity-0 animate-letter-fadein">a</span>
+                        <span class="letter opacity-0 animate-letter-fadein">p</span>
+                        <span class="letter opacity-0 animate-letter-fadein">l</span>
+                        <span class="letter opacity-0 animate-letter-fadein">u</span>
+                        <span class="letter opacity-0 animate-letter-fadein">s</span>
+                        <span class="letter opacity-0 animate-letter-fadein">1</span>
+                        <span class="letter opacity-0 animate-letter-fadein">7</span>
+                        <span class="letter opacity-0 animate-letter-fadein">4</span>
+                        <span class="letter opacity-0 animate-letter-fadein">@</span>
+                        <span class="letter opacity-0 animate-letter-fadein">m</span>
+                        <span class="letter opacity-0 animate-letter-fadein">a</span>
+                        <span class="letter opacity-0 animate-letter-fadein">i</span>
+                        <span class="letter opacity-0 animate-letter-fadein">l</span>
+                        <span class="letter opacity-0 animate-letter-fadein">.</span>
+                        <span class="letter opacity-0 animate-letter-fadein">r</span>
+                        <span class="letter opacity-0 animate-letter-fadein">u</span>
+                    </p>
+                </div>
 
-            <!-- Контейнер для вывода результатов поиска -->
-            <div id="search-results" class="hidden absolute top-[50px] left-0 w-full bg-white border border-black rounded-[10px] shadow-md z-10">
-                <ul class="p-4">
-                    <!-- Результаты поиска будут динамически добавляться сюда -->
-                </ul>
+                <div class="socials">
+                    <a href="https://wa.me/+79518048039" class="social-link inline-block">
+                        <img src="{{ asset('images/messengers/headers/heder-wat.png') }}" alt="WhatsApp"
+                            class="letter w-[40px] h-[40px] transition-transform duration-300 hover:scale-110 animate-social-icon"
+                            style="animation-delay: 0ms;">
+                    </a>
+                    <a href="#" class="social-link inline-block">
+                        <img src="{{ asset('images/messengers/headers/heder-tg.png') }}" alt="Telegram"
+                            class="letter w-[40px] h-[40px] transition-transform duration-300 hover:scale-110 animate-social-icon"
+                            style="animation-delay: 100ms;">
+                    </a>
+                    <a href="https://vk.com/aplus174" class="social-link inline-block">
+                        <img src="{{ asset('images/messengers/headers/heder-vk.png') }}" alt="VK"
+                            class="letter w-[40px] h-[40px] transition-transform duration-300 hover:scale-110 animate-social-icon"
+                            style="animation-delay: 200ms;">
+                    </a>
+                </div>
+
+                <!-- Поиск -->
+                <div class="search-container relative inline-block">
+                    <!-- Блок с полем ввода и кнопкой поиска -->
+                    <div id="search-input-group" class="search-input-group flex w-[282px] h-[50px] border border-black rounded-lg overflow-hidden bg-white">
+                        <input type="text" id="search-input"
+                            class="search-input-field w-full px-3 border-none outline-none text-sm bg-transparent"
+                            placeholder="Поиск...">
+                        <div class="divider w-px h-[50px] bg-black"></div>
+                        <button id="search-button" type="submit"
+                                class="search-submit flex items-center justify-center w-[57px] h-full hover:bg-black transition-colors duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                class="search-icon w-7 h-7 stroke-black transition-colors duration-300 hover:stroke-white">
+                                <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Результаты поиска -->
+                    <div id="search-results" class="search-results absolute left-0 mt-1 w-full max-h-[200px] overflow-y-auto bg-white border border-black border-t-0 z-10 hidden rounded-b-md">
+                        <ul class="list-none text-sm m-0 p-0 px-4 py-2">
+                            <li class="p-2 cursor-pointer hover:bg-gray-100">Результат 1</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Бургер -->
+                <button id="burger-menu" class="burger-menu md:hidden text-2xl bg-transparent border-none cursor-pointer">&#9776;</button>
             </div>
         </div>
     </div>
+
+    <!-- Разделение между частями -->
+    <div class="header-divider mx-auto max-w-[1300px] items-center h-px bg-gray-300"></div>
 
     <!-- Нижняя часть -->
-    <div class="max-w-[1200px] mx-auto flex items-center py-4 border-t border-gray-200">
-        <!-- Навигация -->
-        <nav class="space-x-6">
-            <a href="{{ route('home') }}" class="text-black hover:text-red-500 transition duration-300">Главная</a>
-            <a href="{{ route('all-services.index') }}" class="text-black hover:text-red-500 transition duration-300">Все услуги</a>
-            <a href="{{ route('about') }}" class="text-black hover:text-red-500 transition duration-300">О нас</a>
-            <a href="{{ route('portfolio.index') }}" class="text-black hover:text-red-500 transition duration-300">Портфолио</a>
-            <a href="{{ route('contacts') }}" class="text-black hover:text-red-500 transition duration-300">Контакты</a>
-        </nav>
+    <div class="bottom-header py-2.5">
+        <div class="header-content mx-auto max-w-[1300px] px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-4">
+            <!-- Меню навигации -->
+            <nav class="nav-left " aria-label="Основное меню">
+                <ul class="flex list-none m-0 p-0 gap-6 sm:gap-8">
+                    <li><a href="{{ route('home') }}" class="no-underline text-gray-700 text-base transition-all duration-300 hover:text-red-500 hover:scale-105">Главная</a></li>
+                    <li><a href="{{ route('all-services.index') }}" class="no-underline text-gray-700 text-base transition-all duration-300 hover:text-red-500 hover:scale-105">Все услуги</a></li>
+                    <li><a href="{{ route('about') }}" class="no-underline text-gray-700 text-base transition-all duration-300 hover:text-red-500 hover:scale-105">О нас</a></li>
+                    <li><a href="{{ route('portfolio.index') }}" class="no-underline text-gray-700 text-base transition-all duration-300 hover:text-red-500 hover:scale-105">Портфолио</a></li>
+                    <li><a href="{{ route('contacts') }}" class="no-underline text-gray-700 text-base transition-all duration-300 hover:text-red-500 hover:scale-105">Контакты</a></li>
+                </ul>
+            </nav>
 
-        <!-- Профиль -->
-        @if(Auth::check())
-            <!-- Для авторизованного пользователя -->
-            <div class="flex items-center space-x-3 ml-[28%]  border border-black rounded-[10px]">
-                <img src="{{ Auth::user()->image ?? asset('images/default-avatar.png') }}" alt="Avatar" class="w-[35px] h-[35px] rounded-full ml-[15px]">
-                <div class="flex items-center space-x-0   overflow-hidden">
-                    <a href="{{ route('profile') }}" class="w-[145px] h-[50px] flex items-center justify-center border-l border-black rounded-l-[5px] bg-transparent hover:bg-black hover:text-white transition duration-300">
+            <div class="top-right flex grow justify-end items-center gap-4 sm:gap-6">
+            <!-- Профиль -->
+            @auth
+            <div class="profile profile-authenticated flex ">
+                <a href="{{ route('profile') }}">
+                    <button class="btn btn-profile border border-black bg-transparent px-4 py-2.5 text-sm cursor-pointer transition-all duration-300 hover:bg-black hover:text-white w-[145px] h-[50px] rounded-tl-lg rounded-bl-lg animate-pop-in">
                         {{ Auth::user()->last_name }} {{ Auth::user()->first_name }}
-                    </a>
-
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <button type="submit" class="w-[80px] h-[50px] flex items-center justify-center border-l border-black rounded-r-[9px] bg-transparent hover:bg-black hover:text-white transition duration-300">
-                            Выйти
-                        </button>
-                    </form>
-                </div>
+                    </button>
+                </a>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="btn btn-logout border border-black border-l-0 bg-transparent px-4 py-2.5 text-sm cursor-pointer transition-all duration-300 hover:bg-black hover:text-white w-[80px] h-[50px] rounded-tr-lg rounded-br-lg animate-pop-in">
+                        Выход
+                    </button>
+                </form>
             </div>
-        @else
-            <!-- Для гостя -->
-            <div class="flex items-center space-x-3 ml-[29%] border border-black rounded-[10px]">
-                <img src="{{ asset('images/defaul.png') }}" alt="Avatar" class="w-[30px] h-[30px] rounded-full ml-[15px]">
-                <div class="flex items-center space-x-0  overflow-hidden">
-                    <a href="{{ route('register') }}" class="w-[145px] h-[50px] flex items-center justify-center border-l border-black rounded-l-[5px] bg-transparent hover:bg-black hover:text-white transition duration-300">
+            @else
+            <div class="profile profile-guest flex">
+                <a href="{{ route('register') }}">
+                    <button class="btn btn-register border border-black bg-transparent px-4 py-2.5 text-sm cursor-pointer transition-all duration-300 hover:bg-black hover:text-white w-[145px] h-[50px] rounded-tl-lg rounded-bl-lg animate-pop-in">
                         Регистрация
-                    </a>
-                    <a href="{{ route('login') }}" class="w-[80px] h-[50px] flex items-center justify-center border-l border-black rounded-r-[9px]  bg-transparent hover:bg-black hover:text-white transition duration-300">
+                    </button>
+                </a>
+                <a href="{{ route('login') }}">
+                    <button class="btn btn-login border border-black border-l-0 bg-transparent px-4 py-2.5 text-sm cursor-pointer transition-all duration-300 hover:bg-black hover:text-white w-[80px] h-[50px] rounded-tr-lg rounded-br-lg animate-pop-in">
                         Войти
-                    </a>
-                </div>
+                    </button>
+                </a>
             </div>
-        @endif
-
-        <!-- Корзина -->
-        <div class="relative ml-[20px]">
-            <a href="{{ route('cart.index') }}" class="w-[103px] h-[50px] flex items-center justify-center border border-black rounded-[10px] bg-transparent hover:bg-black hover:text-white transition duration-300">
-                Корзина
-            </a>
-            <span class="absolute top-[-10px] right-[-10px] bg-red-500 text-white w-[20px] h-[20px] rounded-full flex items-center justify-center text-xs cart-counter">
-                {{ session('cart_count', 0) }}
-            </span>
+            @endauth
+                <!-- Корзина -->
+            <div class="cart relative">
+                <a href="{{ route('cart.index') }}">
+                    <button class="btn btn-cart border border-black rounded-lg w-[103px] h-[50px] transition-all duration-300 hover:bg-black hover:text-white">
+                        Корзина
+                        <span class="absolute top-[-10px] right-[-10px] bg-red-500 text-white w-[20px] h-[20px] rounded-full flex items-center justify-center text-xs cart-counter opacity-0 animate-counter-scale">
+                            {{ $cartCount ?? 0 }}
+                        </span>
+                    </button>
+                </a>
+            </div>
+            </div>
         </div>
     </div>
+
+        <!-- Бургер меню -->
+        <div class="mobile-menu fixed inset-0 bg-black/80 z-[9999] flex items-center justify-center opacity-0 invisible transition-opacity duration-300">
+            <div class="mobile-content w-full max-w-md h-[90vh] bg-white rounded-lg shadow-xl overflow-y-auto p-6 relative">
+                <!-- Кнопка закрытия -->
+                <button class="close-burger absolute top-2 right-2 text-2xl bg-transparent border-none cursor-pointer" aria-label="Закрыть меню">×</button>
+
+                <!-- Мобильное меню навигации сверху -->
+                <nav class="mobile-nav mb-6">
+                    <ul class="list-none m-0 p-0 space-y-4 text-left">
+                        <li><a href="{{ route('home') }}" class="no-underline text-gray-700 text-lg hover:text-red-500 transition-colors block py-2">Главная</a></li>
+                        <li><a href="{{ route('all-services.index') }}" class="no-underline text-gray-700 text-lg hover:text-red-500 transition-colors block py-2">Все услуги</a></li>
+                        <li><a href="{{ route('about') }}" class="no-underline text-gray-700 text-lg hover:text-red-500 transition-colors block py-2">О нас</a></li>
+                        <li><a href="{{ route('portfolio.index') }}" class="no-underline text-gray-700 text-lg hover:text-red-500 transition-colors block py-2">Портфолио</a></li>
+                        <li><a href="{{ route('contacts') }}" class="no-underline text-gray-700 text-lg hover:text-red-500 transition-colors block py-2">Контакты</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Информационный блок + Соцсети в одном ряду -->
+                <div class="mobile-info-socials flex flex-col md:flex-row gap-6 mb-6">
+                    <!-- Инфо-блок -->
+                    <div class="mobile-info text-left flex-1">
+                        <p class="phone-animation flex gap-1 text-sm text-gray-700">
+                            @foreach(str_split("+7 (351) 777-36-55") as $letter)
+                                <span class="letter opacity-0 animate-letter-fadein">{{ $letter }}</span>
+                            @endforeach
+                        </p>
+                        <p class="email-animation flex gap-1 mt-2 text-sm text-gray-500">
+                            @foreach(str_split("aplus174@mail.ru") as $letter)
+                                <span class="letter opacity-0 animate-letter-fadein">{{ $letter }}</span>
+                            @endforeach
+                        </p>
+                    </div>
+
+                    <!-- Соцсети -->
+                    <div class="mobile-socials flex gap-4 justify-center">
+                        <a href="#"><img src="{{ asset('images/messengers/headers/heder-tg.png') }}" alt="Telegram" class="w-7 h-7 hover:scale-110 transition-transform"></a>
+                        <a href="#"><img src="{{ asset('images/messengers/headers/heder-wat.png') }}" alt="WhatsApp" class="w-7 h-7 hover:scale-110 transition-transform"></a>
+                        <a href="#"><img src="{{ asset('images/messengers/headers/heder-vk.png') }}" alt="VK" class="w-7 h-7 hover:scale-110 transition-transform"></a>
+                    </div>
+                </div>
+
+                <!-- Профиль -->
+                @auth
+                <form method="POST" action="{{ route('logout') }}" class="mobile-logout mb-6">
+                    @csrf
+                    <button type="submit" class="btn btn-logout border border-black bg-transparent px-4 py-2.5 text-sm cursor-pointer transition-all duration-300 hover:bg-black hover:text-white w-full  rounded">
+                        Выход
+                    </button>
+                </form>
+                @else
+                <div class="mobile-profile-buttons mb-6 grid gap-3">
+                    <a href="{{ route('register') }}" class="btn btn-register border border-black bg-transparent px-4 py-2.5 text-sm cursor-pointer transition-all duration-300 hover:bg-black hover:text-white rounded">Регистрация</a>
+                    <a href="{{ route('login') }}" class="btn btn-login border border-black bg-transparent px-4 py-2.5 text-sm cursor-pointer transition-all duration-300 hover:bg-black hover:text-white rounded">Войти</a>
+                </div>
+                @endauth
+
+            </div>
+        </div>
+    </div>
+    @auth
+        @if(Auth::user()->role === 'admin')
+            <div class="admin-nav header-content mx-auto max-w-[1300px] px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-4">
+                <nav class="nav-left " aria-label="Основное меню">
+                <ul class="flex list-none m-0 p-0 gap-6 sm:gap-8">
+                    <li><a href="{{ route('admin.users') }}" class="no-underline text-gray-700 text-base transition-all duration-300 hover:text-red-500 hover:scale-105">Управление пользователями</a></li>
+                    <li><a href="{{ route('admin.services') }}" class="no-underline text-gray-700 text-base transition-all duration-300 hover:text-red-500 hover:scale-105">Управление услугами</a></li>
+                    <li><a href="{{ route('admin.orders') }}" class="no-underline text-gray-700 text-base transition-all duration-300 hover:text-red-500 hover:scale-105">Управление заказами</a></li>
+                </ul>
+            </nav>
+            </div>
+        @endif
+    @endauth
 </header>
-
-
-
-
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-    const searchInput = document.getElementById('search-input');
-    const searchButton = document.getElementById('search-button');
-    const searchResults = document.getElementById('search-results');
-
-    // Данные для поиска (страницы и услуги)
-    const searchData = [
-        { name: 'Портфолио', url: '/portfolio' },
-        { name: 'Все услуги', url: '/all-services' },
-        { name: 'Главная', url: '/' },
-        { name: 'Визитки - Квадратные', url: '/all-services/vizitki-kvadratnye' },
-        { name: 'Визитки - Дешевые', url: '/all-services/vizitki-deshevye' },
-        { name: 'Визитки - с ламинацией', url: '/all-services/vizitki-s-laminaciey' },
-        { name: 'Печать флаеров', url: '/all-services/pechat-flyerov' },
-        { name: 'Футболки', url: '/all-services/futbolki' },
-        { name: 'Настольные календари', url: '/all-services/nastolnye-kalendari' },
-        { name: 'Стикерпаки', url: '/all-services/stikerpaki' },
-        { name: 'Печать блокнотов', url: '/all-services/pechat-bloknotov' },
-    ];
-
-    // Функция для поиска совпадений
-    function performSearch(query) {
-        query = query.trim().toLowerCase();
-
-        if (!query) {
-            searchResults.classList.add('hidden');
-            return;
-        }
-
-        const matches = searchData.filter(item => item.name.toLowerCase().includes(query));
-
-        if (matches.length > 0) {
-            const resultsHTML = matches.map(item => `
-                <li onclick="window.location.href='${item.url}'">${item.name}</li>
-            `).join('');
-
-            searchResults.querySelector('ul').innerHTML = resultsHTML;
-            searchResults.classList.remove('hidden');
-        } else {
-            searchResults.querySelector('ul').innerHTML = '<li>Ничего не найдено</li>';
-            searchResults.classList.remove('hidden');
-        }
-    }
-
-    // Обработка ввода текста
-    searchInput.addEventListener('input', () => {
-        performSearch(searchInput.value);
-    });
-
-    // Скрытие результатов при клике вне поля поиска
-    document.addEventListener('click', (event) => {
-        if (!searchInput.contains(event.target) && !searchResults.contains(event.target)) {
-            searchResults.classList.add('hidden');
-        }
-    });
-
-    // Обработка нажатия на кнопку поиска
-    searchButton.addEventListener('click', () => {
-        const query = searchInput.value.trim();
-        if (query) {
-            const match = searchData.find(item => item.name.toLowerCase() === query.toLowerCase());
-            if (match) {
-                window.location.href = match.url;
-            } else {
-                alert('Ничего не найдено');
-            }
-        }
-    });
-});
-</script>
+</body>
+</html>

@@ -24,7 +24,7 @@
     <!-- Заголовок -->
     <div class="mt-[30px]">
         <div class="container mx-auto max-w-[1200px]">
-            <h1 class="text-[28px] font-bold text-gray-900">Контакты типографии А плюс</h1>
+            <h1 class="text-[28px] font-bold text-black hover:text-red-500 transition duration-300">Контакты типографии А плюс</h1>
         </div>
     </div>
 

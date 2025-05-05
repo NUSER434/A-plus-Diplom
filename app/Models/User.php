@@ -30,6 +30,7 @@ class User extends Authenticatable
         'email',
         'phone',
         'password',
+        'role', // Добавлено
     ];
 
     /**
@@ -50,4 +51,25 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Получить количество заказов пользователя.
+     */
+    public function getCartCountAttribute()
+    {
+        return $this->orders()->count();
+    }
+
+    /**
+     * Связь с заказами пользователя.
+     */
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function completedOrders()
+    {
+        return $this->hasMany(CompletedOrder::class);
+    }
 }

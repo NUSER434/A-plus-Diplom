@@ -24,7 +24,7 @@
 
     <!-- Титл -->
     <div class="container mx-auto max-w-[1200px] mt-8">
-        <h1 class="text-4xl font-bold text-gray-900">Все услуги</h1>
+        <h1 class="text-[28px] font-bold text-black hover:text-red-500 transition duration-300">Все услуги</h1>
     </div>
 
         <!-- Кнопки фильтрации -->

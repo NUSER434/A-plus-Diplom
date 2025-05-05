@@ -10,6 +10,7 @@ use App\Models\Service;
 use App\Models\Review;
 use App\Models\Thank;
 use App\Models\Portfolio;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -46,8 +47,9 @@ class HomeController extends Controller
             'description' => 'Это главная страница нашего сайта.',
         ];
 
+
         // Передаем данные в представление
-        return view('home', compact('popularServices', 'specialServices', 'reviews', 'thanks', 'sliders', 'otherData', 'portfolios'));
+        return view('home', compact('popularServices', 'specialServices', 'reviews', 'thanks', 'sliders', 'otherData', 'portfolios',));
     }
 
     public function submitReview(Request $request)

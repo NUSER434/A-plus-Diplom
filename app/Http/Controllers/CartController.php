@@ -3,53 +3,56 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Order;
+use App\Models\CompletedOrder;
 
 class CartController extends Controller
 {
-      // Показать страницу корзины
+    // Отображение корзины
     public function index()
     {
-        $cartItems = Cart::all();
-        return view('cart', compact('cartItems'));
+        $user = Auth::user();
+        $orders = $user ? $user->orders : [];
+        $totalPrice = $orders->sum('price');
+
+        return view('cart', compact('orders', 'totalPrice'));
     }
 
-    // Добавить товар в корзину
-    public function addToCart(Request $request)
+    // Удаление выбранных или всех заказов
+    public function clear(Request $request)
     {
-        $validated = $request->validate([
-            'service_name' => 'required|string',
-            'options' => 'required|array',
-            'quantity' => 'required|integer',
-            'price' => 'required|numeric',
-        ]);
+        $user = Auth::user();
 
-        Cart::create($validated);
+        if ($request->has('selected')) {
+            // Удаляем выбранные заказы
+            Order::whereIn('id', $request->input('selected'))->delete();
+        } else {
+            // Удаляем все заказы пользователя
+            $user->orders()->delete();
+        }
 
-        return response()->json(['message' => 'Товар добавлен в корзину']);
+        return redirect()->back()->with('success', 'Корзина очищена.');
     }
 
-    // Оформить заказ
-    public function checkout()
+    // Оформление выбранных или всех заказов
+    public function checkout(Request $request)
     {
-        $cartItems = Cart::all();
+        $user = Auth::user();
 
-        if ($cartItems->isEmpty()) {
-            return redirect()->route('cart.index')->with('error', 'Корзина пуста');
+        if ($request->has('selected')) {
+            // Перемещаем выбранные заказы
+            $orders = Order::whereIn('id', $request->input('selected'))->get();
+        } else {
+            // Перемещаем все заказы пользователя
+            $orders = $user->orders;
         }
 
-        foreach ($cartItems as $item) {
-            Order::create([
-                'service_name' => $item->service_name,
-                'options' => $item->options,
-                'quantity' => $item->quantity,
-                'price' => $item->price,
-            ]);
+        foreach ($orders as $order) {
+            CompletedOrder::create($order->toArray());
+            $order->delete();
         }
 
-        Cart::truncate(); // Очищаем корзину
-
-        return redirect()->route('cart.index')->with('success', 'Заказ оформлен');
+        return redirect()->back()->with('success', 'Заказ оформлен.');
     }
 }

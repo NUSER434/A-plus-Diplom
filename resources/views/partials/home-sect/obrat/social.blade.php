@@ -1,46 +1,48 @@
 <!-- Раздел "Благодарности клиентов" -->
 <section class="mt-[45px]">
-    <div class="container mx-auto max-w-[1200px]">
+    <div class="container mx-auto max-w-[1200px] px-4">
 
-        <!-- Большие контейнеры (BigCont) с кнопками переключения -->
-        <div class="flex justify-center relative">
-
-            <!-- Большие контейнеры -->
-            <div class=" flex justify-center space-x-[40px]">
-            <div class="w-[375px] h-[550px] rounded-[10px] overflow-hidden big-image" id="big-image-1">
+        <!-- Большие контейнеры -->
+        <div class="flex justify-center relative flex-wrap lg:flex-nowrap gap-6">
+            <!-- Big Container 1 -->
+            <div class="w-full sm:w-[300px] md:w-[375px] h-[275px] sm:h-[440px] md:h-[550px] rounded-[10px] overflow-hidden big-image transition-all duration-300 ease-in-out"
+                 id="big-image-1">
                 <img src="{{ $thanks[0]->image ?? 'https://via.placeholder.com/375x550?text=Default' }}" alt="Big Image 1" class="w-full h-full object-cover">
             </div>
-            <div class="w-[375px] h-[550px] rounded-[10px] overflow-hidden big-image" id="big-image-2">
+
+            <!-- Big Container 2 -->
+            <div class="w-full sm:w-[300px] md:w-[375px] h-[275px] sm:h-[440px] md:h-[550px] rounded-[10px] overflow-hidden big-image transition-all duration-300 ease-in-out"
+                 id="big-image-2">
                 <img src="{{ $thanks[1]->image ?? 'https://via.placeholder.com/375x550?text=Default' }}" alt="Big Image 2" class="w-full h-full object-cover">
             </div>
-            <div class="w-[375px] h-[550px] rounded-[10px] overflow-hidden big-image" id="big-image-3">
+
+            <!-- Big Container 3 -->
+            <div class="w-full sm:w-[300px] md:w-[375px] h-[275px] sm:h-[440px] md:h-[550px] rounded-[10px] overflow-hidden big-image transition-all duration-300 ease-in-out"
+                 id="big-image-3">
                 <img src="{{ $thanks[2]->image ?? 'https://via.placeholder.com/375x550?text=Default' }}" alt="Big Image 3" class="w-full h-full object-cover">
             </div>
-            </div>
 
-            <!-- Кнопка влево -->
-            <button class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white text-black w-[40px] h-[40px] rounded-full flex items-center justify-center hover:bg-gray-800 hover:text-white transition-colors"
-                onclick="changeBigImages('left')">
+            <!-- Стрелки -->
+            <button class="absolute left-[-60px] top-1/2 transform -translate-y-1/2 bg-white text-black w-[40px] h-[40px] rounded-full flex items-center justify-center hover:bg-black hover:text-white transition-colors z-10 hidden md:flex"
+                    onclick="changeBigImages('left')">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                 </svg>
             </button>
 
-            <!-- Кнопка вправо -->
-            <button class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white text-black w-[40px] h-[40px] rounded-full flex items-center justify-center hover:bg-gray-800 hover:text-white transition-colors"
-                onclick="changeBigImages('right')">
+            <button class="absolute right-[-60px] top-1/2 transform -translate-y-1/2 bg-white text-black w-[40px] h-[40px] rounded-full flex items-center justify-center hover:bg-black hover:text-white transition-colors z-10 hidden md:flex"
+                    onclick="changeBigImages('right')">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                 </svg>
             </button>
-
         </div>
 
-        <!-- Маленькие контейнеры (MalCont) -->
-        <div class="flex justify-center space-x-[30px] mt-[20px]">
+        <!-- Маленькие контейнеры -->
+        <div class="flex justify-center space-x-[20px] mt-[20px] flex-wrap gap-4">
             @foreach ($thanks as $index => $thank)
-                <div class="w-[70px] h-[90px] rounded-[10px] overflow-hidden cursor-pointer small-image"
-                    onclick="updateBigImages({{ $index }})" data-index="{{ $index }}">
+                <div class="w-[50px] h-[70px] sm:w-[50px] sm:h-[70px] md:w-[70px] md:h-[90px] rounded-[10px] overflow-hidden small-image cursor-pointer"
+                     onclick="updateBigImages({{ $index }})" data-index="{{ $index }}">
                     <img src="{{ $thank->image }}" alt="Social {{ $index + 1 }}" class="w-full h-full object-cover">
                 </div>
             @endforeach

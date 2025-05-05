@@ -17,7 +17,9 @@ class ProfileController extends Controller
     {
         $user = Auth::user(); // Получаем данные текущего пользователя
         $requests = RequestModel::where('email', $user->email)->get(); // Загружаем историю запросов
-        return view('profile', ['user' => $user, 'requests' => $requests]);
+        $orders = $user->completedOrders()->latest()->get(); // Убедитесь, что в модели User есть relation completedOrders()
+
+        return view('profile', ['user' => $user, 'requests' => $requests, 'orders' => $orders]);
     }
 
     // Обновить данные профиля (ФИО, телефон)

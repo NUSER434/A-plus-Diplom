@@ -1,5 +1,5 @@
 <!-- Раздел "Кто мы?" -->
-<section class="max-w-[1200px] mx-auto ">
+<section class="max-w-[1200px] mx-auto mt-16 ">
             <h2 class="text-[28px] font-bold text-black hover:text-red-500 transition duration-300 ">Кто мы? - мы "А ПЛЮС"</h2>
             <div class="bg-transparent rounded-lg  mt-[20px]">
                 <div class="flex justify-between mt-[20px]">

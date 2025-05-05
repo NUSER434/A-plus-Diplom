@@ -3,17 +3,6 @@
 @tailwind utilities;
 
 
-/* Стиль для трапеции */
-.clip-path-trapezoid {
-    clip-path: polygon(
-        0 0, /* Левый верхний угол */
-        878px 0, /* Правый верхний угол */
-        1178px 500px, /* Правый нижний угол */
-        0 500px /* Левый нижний угол */
-    );
-}
-
-
 
 
 
@@ -34,28 +23,6 @@
     background-color: black;
     color: white;
 }
-
-
-
-
-
-
-/* Стиль для изображений */
-.slider-image {
-    width: 100%; /* Заполняет ширину контейнера */
-    height: 100%; /* Заполняет высоту контейнера */
-    object-fit: cover; /* Сохраняет пропорции и обрезает лишнее */
-    opacity: 0; /* Начальная прозрачность */
-    transition: opacity 0.5s ease-in-out; /* Плавная анимация */
-}
-
-.slider-image.active {
-    opacity: 1; /* Активное изображение становится видимым */
-}
-
-
-
-
 
 
 /* Стили для кнопок */
@@ -96,46 +63,6 @@
 #social-buttons:not(.hidden) {
     display: flex !important;
 }
-
-
-
-
-
-
-
-
-
-
-/* Стили для контейнера результатов поиска */
-#search-results {
-    max-height: 300px;
-    overflow-y: auto;
-}
-
-#search-results ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-#search-results li {
-    padding: 8px 12px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#search-results li:hover {
-    background-color: #f0f0f0;
-}
-
-
-
-
-
-
-
-
-
 
 
 
@@ -207,44 +134,17 @@
 
 
 
+ы
 
 
 
-@media (max-width: 1200px) {
-    header {
-        width: 95%;
-    }
+
+.fade-in {
+    animation: fadeIn 0.3s ease-out;
 }
 
-@media (max-width: 768px) {
-    header nav {
-        display: none;
-    }
-
-    header .flex {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    header {
-        margin-left: 0;
-    }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-
-.slider-dot.active {
-    background-color: black;
-}
-
-@media (max-width: 1200px) {
-    .slider-container {
-        padding: 0 20px;
-    }
-}
-
-@media (max-width: 768px) {
-    .slider-content {
-        max-width: 100%;
-        padding: 20px;
-    }
-}

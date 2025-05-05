@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use App\Http\View\Composers\CartComposer;
 
 class AppServiceProvider extends ServiceProvider
 {

@@ -9,5 +9,22 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['service_name', 'options', 'quantity', 'price'];
+    protected $fillable = [
+        'user_id',
+        'service_type',
+        'size',
+        'color',
+        'paper_type',
+        'paper_density',
+        'fabric_type',
+        'print_type',
+        'quantity',
+        'price',
+    ];
+
+    // Связь с пользователем
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
