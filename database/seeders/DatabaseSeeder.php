@@ -15,7 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ReviewSeeder::class);
         $this->call(ThankSeeder::class);
         $this->call(ServiceSeeder::class);
-        $this->call(SearchItemsTableSeeder::class);
         $this->call(CompletedOrderSeeder::class);
     }
 }

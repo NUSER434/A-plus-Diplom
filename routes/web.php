@@ -17,6 +17,10 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminServiceController;
 use App\Http\Controllers\Admin\AdminOrderController;
+use App\Http\Controllers\AgreementController;
+use App\Http\Controllers\DeliveryController;
+use App\Http\Controllers\PublicOfferController;
+use App\Http\Controllers\ReturnPolicyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,7 +71,8 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/choose-form', [RequestController::class, 'showForm'])->name('choose.form');
 Route::post('/submit-form', [RequestController::class, 'submitForm'])->name('submit.form');
 Route::post('/submit-review', [HomeController::class, 'submitReview'])->name('submit.review');
-Route::get('/api/search', [SearchController::class, 'index']);
+// API маршрут для поиска
+Route::get('/api/search', [AllServicesController::class, 'search'])->name('service.search');
 
 
 // Услуги (доступны всем)
@@ -101,5 +106,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
     Route::post('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
 });
+
+Route::get('/delivery', [DeliveryController::class, 'index'])->name('delivery');
+Route::get('/agreement', [AgreementController::class, 'index'])->name('agreement');
+Route::get('/public-offer', [PublicOfferController::class, 'index'])->name('public-offer');
+Route::get('/return-policy', [ReturnPolicyController::class, 'index'])->name('return-policy');
 
 require __DIR__.'/auth.php';

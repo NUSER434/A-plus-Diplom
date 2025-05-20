@@ -19,12 +19,15 @@ document.addEventListener('DOMContentLoaded', () => {
             // Отображаем результаты
             if (matches.length > 0) {
                 const resultsHTML = matches.map(item => `
-                    <li onclick="window.location.href='${item.url}'">${item.name}</li>
+                    <li class="p-2 cursor-pointer hover:bg-gray-100" 
+                        onclick="window.location.href='/all-services/${item.slug}'">
+                        ${item.name}
+                    </li>
                 `).join('');
                 searchResultsList.innerHTML = resultsHTML;
                 searchResults.classList.remove('hidden');
             } else {
-                searchResultsList.innerHTML = '<li>Ничего не найдено</li>';
+                searchResultsList.innerHTML = '<li class="p-2">Ничего не найдено</li>';
                 searchResults.classList.remove('hidden');
             }
         } catch (error) {

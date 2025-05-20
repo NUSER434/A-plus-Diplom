@@ -6,9 +6,12 @@
     <title>Типография А-Плюс - Главаня страница</title>
     <link rel="icon" type="" href="images/logo.png">
     <link rel="shortcut icon" type="" href="images/logo.png">
-    @vite(['resources/js/app.js'])
+    <link rel="stylesheet" href="/build/assets/app.css">
+    <link rel="stylesheet" href="/build/assets/home.css">
+    <link rel="stylesheet" href="/build/assets/header1.css">
     @vite('resources/css/app.css')
     @vite('resources/css/home.css')
+    @vite('resources/css/header1.css')
     <script src="{{ asset('js/app.js') }}"></script>
 </head>
 <body class="">

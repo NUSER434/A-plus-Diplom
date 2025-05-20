@@ -101,9 +101,9 @@
                             placeholder="Поиск...">
                         <div class="divider w-px h-[50px] bg-black"></div>
                         <button id="search-button" type="submit"
-                                class="search-submit flex items-center justify-center w-[57px] h-full hover:bg-black transition-colors duration-300">
+                            class="search-submit flex items-center justify-center w-[57px] h-full hover:bg-black transition-colors duration-300 group">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                class="search-icon w-7 h-7 stroke-black transition-colors duration-300 hover:stroke-white">
+                                class="search-icon w-7 h-7 stroke-black group-hover:stroke-white transition-colors duration-300">
                                 <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                             </svg>
                         </button>
@@ -132,11 +132,11 @@
             <!-- Меню навигации -->
             <nav class="nav-left " aria-label="Основное меню">
                 <ul class="flex list-none m-0 p-0 gap-6 sm:gap-8">
-                    <li><a href="{{ route('home') }}" class="no-underline text-gray-700 text-base transition-all duration-300 hover:text-red-500 hover:scale-105">Главная</a></li>
                     <li><a href="{{ route('all-services.index') }}" class="no-underline text-gray-700 text-base transition-all duration-300 hover:text-red-500 hover:scale-105">Все услуги</a></li>
                     <li><a href="{{ route('about') }}" class="no-underline text-gray-700 text-base transition-all duration-300 hover:text-red-500 hover:scale-105">О нас</a></li>
                     <li><a href="{{ route('portfolio.index') }}" class="no-underline text-gray-700 text-base transition-all duration-300 hover:text-red-500 hover:scale-105">Портфолио</a></li>
                     <li><a href="{{ route('contacts') }}" class="no-underline text-gray-700 text-base transition-all duration-300 hover:text-red-500 hover:scale-105">Контакты</a></li>
+                    <li><a href="{{ route('delivery') }}" class="no-underline text-gray-700 text-base transition-all duration-300 hover:text-red-500 hover:scale-105">Доставка</a></li>
                 </ul>
             </nav>
 
@@ -244,16 +244,19 @@
             </div>
         </div>
     </div>
+    
     @auth
         @if(Auth::user()->role === 'admin')
-            <div class="admin-nav header-content mx-auto max-w-[1300px] px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-4">
-                <nav class="nav-left " aria-label="Основное меню">
-                <ul class="flex list-none m-0 p-0 gap-6 sm:gap-8">
-                    <li><a href="{{ route('admin.users') }}" class="no-underline text-gray-700 text-base transition-all duration-300 hover:text-red-500 hover:scale-105">Управление пользователями</a></li>
-                    <li><a href="{{ route('admin.services') }}" class="no-underline text-gray-700 text-base transition-all duration-300 hover:text-red-500 hover:scale-105">Управление услугами</a></li>
-                    <li><a href="{{ route('admin.orders') }}" class="no-underline text-gray-700 text-base transition-all duration-300 hover:text-red-500 hover:scale-105">Управление заказами</a></li>
-                </ul>
-            </nav>
+            <div class="b-bottom-header py-2.5">
+                <div class="admin-nav header-content mx-auto max-w-[1300px] px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-4">
+                    <nav class="nav-left " aria-label="Основное меню">
+                        <ul class="flex list-none m-0 p-0 gap-6 sm:gap-8">
+                            <li><a href="{{ route('admin.users') }}" class="no-underline text-gray-700 text-base transition-all duration-300 hover:text-red-500 hover:scale-105">Управление пользователями</a></li>
+                            <li><a href="{{ route('admin.services') }}" class="no-underline text-gray-700 text-base transition-all duration-300 hover:text-red-500 hover:scale-105">Управление услугами</a></li>
+                            <li><a href="{{ route('admin.orders') }}" class="no-underline text-gray-700 text-base transition-all duration-300 hover:text-red-500 hover:scale-105">Управление заказами</a></li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
         @endif
     @endauth

@@ -1,4 +1,4 @@
-<div class="max-w-[1200px] mx-auto mt-16 px-4">
+<div class="max-w-[1200px] mx-auto mt-16">
     <!-- Карусель -->
     <div class="carousel-container overflow-hidden cursor-pointer relative">
         <div class="carousel-track flex gap-6 transition-transform duration-500 ease-in-out" id="carouselTrack">

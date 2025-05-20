@@ -1,5 +1,5 @@
 <div class="w-full flex justify-center">
-    <div class="card-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[20px] w-full max-w-[1200px] px-4">
+    <div class="card-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[20px] w-full max-w-[1200px]">
         @foreach ($popularServices as $service)
             <div class="flex justify-center">
                 <a href="{{ route('all-services.show', $service->slug) }}" 

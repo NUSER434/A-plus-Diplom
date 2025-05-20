@@ -22,7 +22,7 @@
 
                 <!-- Социальные сети -->
                 <div class="flex space-x-[15px]">
-                    <a href="#" target="_blank" class="group">
+                    <a href="https://wa.me/+79518048039" target="_blank" class="group">
                         <img src="{{ asset('images/messengers/mes-icon/wat.png') }}" alt="Whatsapp" class="w-[35px] h-[35px] transition-transform duration-300 group-hover:scale-110">
                     </a>
                     <a href="#" target="_blank" class="group">
@@ -60,9 +60,10 @@
                 <ul class="space-y-2">
                     <li><a href="/contacts" class="text-base text-gray-400 hover:text-white transition-colors block">Контакты</a></li>
                     <li><a href="/about" class="text-base text-gray-400 hover:text-white transition-colors block">О нас</a></li>
-                    <li><a href="#" class="text-base text-gray-400 hover:text-white transition-colors block">Пользовательское соглашение</a></li>
-                    <li><a href="#" class="text-base text-gray-400 hover:text-white transition-colors block">Публичная оферта</a></li>
-                    <li><a href="#" class="text-base text-gray-400 hover:text-white transition-colors block">Переделка и возврат</a></li>
+                    <li><a href="/delivery" class="text-base text-gray-400 hover:text-white transition-colors block">Доставка</a></li>
+                    <li><a href="/agreement" class="text-base text-gray-400 hover:text-white transition-colors block">Пользовательское соглашение</a></li>
+                    <li><a href="/public-offer" class="text-base text-gray-400 hover:text-white transition-colors block">Публичная оферта</a></li>
+                    <li><a href="/return-policy" class="text-base text-gray-400 hover:text-white transition-colors block">Переделка и возврат</a></li>
                 </ul>
             </div>
 
@@ -83,7 +84,7 @@
     <!-- Copyright -->
     <div class="mt-[45px] border-t border-gray-700 pt-[20px]">
         <div class="container mx-auto max-w-[1200px] px-4 text-center text-sm text-gray-400">
-            Copyright © 2024 aplus174.ru
+            Copyright © {{ date('Y') }} aplus174.ru
         </div>
     </div>
 </footer>

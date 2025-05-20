@@ -35,4 +35,14 @@ class AllServicesController extends Controller
 
         return view('service', compact('service', 'randomServices', 'portfolios'));
      }
+
+     public function search(Request $request)
+    {
+        $query = $request->input('q');
+
+        // Ищем услуги, где name содержит запрос (без учета регистра)
+        $services = Service::where('name', 'like', "%{$query}%")->get(['id', 'name', 'slug']);
+
+        return response()->json($services);
+    }
 }
