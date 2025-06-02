@@ -1,7 +1,6 @@
 import './bootstrap';
 import './header.js';
 import './about.js';
-import './popular.js';
 import './profile.js';
 import './slider.js';
 import './carusel.js';
